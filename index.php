@@ -24,15 +24,18 @@ $sql = "SELECT code, article FROM articles";
 $result = $conn->query($sql);
 
 if($code==0){
- echo "Le code zéro est un cas particulier !";
+ while($row = $result->fetch_assoc()){ 
+echo "le code " . $row["code"]. " est correct." ." l'information correspondant est : ". $row["article"]. "<br>";   
+}
 }elseif($code>=1000){
  echo "Le code est incorrect, trop grand !";
 }else{
-    while($row = $result->fetch_assoc()){
+while($row = $result->fetch_assoc()){
     if($row["code"]==$code){
 echo "le code " . $row["code"]. " est correct." ." l'information correspondant est : ". $row["article"]. "<br>";   
     }
 }
+
 }
 
 ?>
